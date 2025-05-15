@@ -15,12 +15,12 @@ export default function SearchForm(){
         <form onSubmit={handleSubmit}>
             <label>
                 From:
-                <input type="text" value={from} onChange={(e) => setFrom(e.target.value)}/>
+                <input type="text" value={from} onChange={(e) => setFrom(e.target.value)} required={true}/>
             </label>
             <br/>
             <label>
                 To:
-                <input type="text" value={to} onChange={(e) => setTo(e.target.value)}/>
+                <input type="text" value={to} onChange={(e) => setTo(e.target.value)} required={true}/>
             </label>
             <br/>
             <button type="submit" >Search Flights</button>
