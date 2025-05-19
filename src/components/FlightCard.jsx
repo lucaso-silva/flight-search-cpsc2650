@@ -1,11 +1,17 @@
+import { Card } from 'react-bootstrap';
 
 export default function FlightCard({ flight }){
-        console.log(flight);
     return (
-        <div style={{border: '1px solid #ccc', padding: '1rem', marginBottom: '1rem'}}>
-            <p><strong>{flight.airline} </strong></p>
-            <p>From: {flight.from} → To: {flight.to}</p>
-            <p>Price: ${flight.price}</p>
-        </div>
+        <Card style={{ width:'20rem' }}>
+            <Card.Body>
+                <Card.Title>{flight.airline}</Card.Title>
+                <Card.Text>
+                    From: {flight.from} → To: {flight.to}
+                </Card.Text>
+                <Card.Text>
+                    Price: ${flight.price}
+                </Card.Text>
+            </Card.Body>
+        </Card>
     );
 }

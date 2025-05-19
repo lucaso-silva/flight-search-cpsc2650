@@ -1,11 +1,16 @@
 import FlightCard from './FlightCard.jsx';
+import { Container, Row, Col } from "react-bootstrap";
 
 export default function FlightList({ flights }){
     return(
-        <div>
+        <>
             {flights.map((flight)=> (
-                <FlightCard key={flight.id} flight={flight}/>
+                <Row className="mb-2">
+                     <Col className="d-flex justify-content-center">
+                        <FlightCard key={flight.id} flight={flight}/>
+                    </Col>
+                </Row>
             ))}
-        </div>
+        </>
     );
 }

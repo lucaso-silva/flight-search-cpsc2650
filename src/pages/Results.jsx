@@ -2,6 +2,8 @@ import { useSearchParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import FlightList from '../components/FlightList.jsx'
 import NoResults from '../components/NoResults.jsx';
+import { Container, Row, Col } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 export default function Results(){
     const [ searchParams ] = useSearchParams();
@@ -34,10 +36,17 @@ export default function Results(){
     }
 
     return (
-        <div>
-            <h2>Flights from {from} to {to}</h2>
-            <FlightList flights={flights}/>
-            <button type="button" onClick={handleClick}>New Search</button>
-        </div>
+        <Container>
+            <Row className="mb-2">
+                <Col className="text-center"><h2 >Flights from {from.toUpperCase()} to {to.toUpperCase()}</h2></Col>
+            </Row>
+            <Row className="mb-3">
+                <Col><FlightList flights={flights}/></Col>
+            </Row>
+            <Row>
+                <Col className="text-center"><Button type="button" onClick={handleClick}>New Search</Button></Col>
+            </Row>
+        </Container>
+
     );
 }
