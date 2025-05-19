@@ -36,7 +36,7 @@ export default function Results(){
     }
 
     return (
-        <Container>
+        <Container className="py-4">
             <Row className="mb-2">
                 <Col className="text-center"><h2 >Flights from {from.toUpperCase()} to {to.toUpperCase()}</h2></Col>
             </Row>
@@ -47,6 +47,5 @@ export default function Results(){
                 <Col className="text-center"><Button type="button" onClick={handleClick}>New Search</Button></Col>
             </Row>
         </Container>
-
     );
 }
