@@ -1,5 +1,5 @@
 import FlightCard from './FlightCard.jsx';
-import { Container, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 
 export default function FlightList({ flights }){
     return(

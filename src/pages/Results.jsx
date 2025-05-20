@@ -2,8 +2,7 @@ import { useSearchParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import FlightList from '../components/FlightList.jsx'
 import NoResults from '../components/NoResults.jsx';
-import { Container, Row, Col } from 'react-bootstrap';
-import { Button } from 'react-bootstrap';
+import { Button, Container, Row, Col } from 'react-bootstrap';
 
 export default function Results(){
     const [ searchParams ] = useSearchParams();

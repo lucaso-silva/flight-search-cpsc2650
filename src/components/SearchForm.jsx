@@ -30,12 +30,16 @@ export default function SearchForm(){
                 <Form onSubmit={handleSubmit}>
                     <Row className="mb-4 justify-content-center">
                         <Col sm={4} lg={3}>
-                            <Form.Label>From:</Form.Label>
-                            <Form.Control type="text" value={from} onChange={(e)=> setFrom(e.target.value)} placeholder="Origin" required={true}/>
+                            <Form.Group controlId="formFrom">
+                                <Form.Label>From:</Form.Label>
+                                <Form.Control type="text" value={from} onChange={(e)=> setFrom(e.target.value)} placeholder="Origin" required={true}/>
+                            </Form.Group>
                         </Col>
                         <Col sm={4} lg={3}>
-                            <Form.Label>To:</Form.Label>
-                            <Form.Control type="text" value={to} onChange={(e)=>setTo(e.target.value)} placeholder="Where to?" required={true}/>
+                            <Form.Group controlId="formTo">
+                                <Form.Label>To:</Form.Label>
+                                <Form.Control type="text" value={to} onChange={(e)=>setTo(e.target.value)} placeholder="Where to?" required={true}/>
+                            </Form.Group>
                         </Col>
                     </Row>
                     <Row>
