@@ -9,7 +9,7 @@ function Login({ onAuth, setMessage }){
 
     const handleSubmit = async (e)=> {
         e.preventDefault();
-        const res = await fetch(`${api}/api/auth/login`, {
+        const res = await fetch(`${api}api/auth/login`, {
             method: 'POST',
             credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
