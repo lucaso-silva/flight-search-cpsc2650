@@ -12,10 +12,11 @@ function App() {
     // const [ token, setToken ] = useState(localStorage.getItem('token') || '');
     const [ user, setUser ] = useState(null);
     const [ message, setMessage ] = useState('');
+    const api = import.meta.env.VITE_API_URL;
 
     useEffect(() => {
         console.log("app.jsx")
-        fetch('http://localhost:4000/api/auth/me', {
+        fetch(`${api}/api/auth/me`, {
             credentials: 'include'
         })
             .then(res=> res.ok ? res.json() : null)
@@ -28,7 +29,7 @@ function App() {
     }
 
     const handleLogout = async () => {
-        await fetch('http://localhost:4000/api/auth/logout', {
+        await fetch(`${api}/api/auth/logout`, {
             method: 'POST',
             credentials: 'include'
         });
