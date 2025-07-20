@@ -1,4 +1,5 @@
 import { Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export default function FlightCard({ flight }){
     return (
@@ -11,6 +12,7 @@ export default function FlightCard({ flight }){
                 <Card.Text>
                     Price: ${flight.price}
                 </Card.Text>
+                <Link to={{ pathname:`/flights/${flight.id}`}}>View more</Link>
             </Card.Body>
         </Card>
     );

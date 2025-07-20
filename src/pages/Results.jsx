@@ -1,35 +1,49 @@
-import { useSearchParams, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import FlightList from '../components/FlightList.jsx'
 import NoResults from '../components/NoResults.jsx';
 import { Button, Container, Row, Col } from 'react-bootstrap';
+import { gql, useQuery } from '@apollo/client';
+import { useLocation } from 'react-router-dom';
+
+const GET_FLIGHTS = gql`
+    query GetFlights($from: String, $to: String){
+        flights(from: $from, to: $to){
+            id
+            from
+            to
+            price
+            airline
+            departureTime
+        }
+    }
+`;
 
 export default function Results(){
-    const [ searchParams ] = useSearchParams();
-    const from = searchParams.get('from');
-    const to = searchParams.get('to');
     const navigate = useNavigate();
-
-    const [ flights, setFlights ] = useState([]);
-    const [ isLoading, setIsLoading ] = useState(true);
 
     const handleClick = ()=> navigate('/');
 
-    useEffect(()=>{
-        fetch('/src/data/flights.json')
-            .then((res)=>res.json())
-            .then((data)=>{
-                const results = data.filter(
-                    (flight) =>
-                        flight.from.toLowerCase() === from.toLowerCase() &&
-                        flight.to.toLowerCase() === to.toLowerCase()
-                );
-                setFlights(results);
-                setIsLoading(false);
-            });
-    }, [from, to]);
+    function useQueryParams(){
+        return new URLSearchParams(useLocation().search);
+    }
 
-    if (isLoading) return <p>Loading flights ...</p>;
+    const query = useQueryParams();
+    const from = query.get('from').toUpperCase();
+    const to = query.get('to').toUpperCase();
+
+    const { loading, error, data } = useQuery(GET_FLIGHTS, {
+        variables: {from, to},
+    });
+
+    if(!from || !to){
+        return <p>Waiting for search parameters...</p>;
+    }
+
+    if (loading) return <p>Loading flights ...</p>;
+    if(error) return <p>Error loading flights</p>;
+
+    const flights = data?.flights || [];
+
     if(flights.length === 0) {
         return <NoResults from={from} to={to} />;
     }
