@@ -15,8 +15,7 @@ function App() {
     const api = import.meta.env.VITE_API_URL;
 
     useEffect(() => {
-        console.log("app.jsx")
-        fetch(`${api}api/auth/me`, {
+        fetch(`${api}/api/auth/me`, {
             credentials: 'include'
         })
             .then(res=> res.ok ? res.json() : null)
@@ -29,7 +28,7 @@ function App() {
     }
 
     const handleLogout = async () => {
-        await fetch(`${api}api/auth/logout`, {
+        await fetch(`${api}/api/auth/logout`, {
             method: 'POST',
             credentials: 'include'
         });

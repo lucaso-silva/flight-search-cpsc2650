@@ -7,7 +7,7 @@ export default function FlightList({ flights }){
             {flights.map((flight)=> (
                 <Row className="mb-2">
                      <Col className="d-flex justify-content-center">
-                        <FlightCard key={flight.id} flight={flight} />
+                        <FlightCard key={flight._id} flight={flight} />
                     </Col>
                 </Row>
             ))}
