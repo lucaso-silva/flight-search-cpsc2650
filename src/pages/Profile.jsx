@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function Profile({ token }){
+function Profile(){
     const [ user, setUser ] = useState(null);
     const api = import.meta.env.VITE_API_URL;
 
@@ -12,8 +12,11 @@ function Profile({ token }){
             credentials: 'include'
         })
             .then(res=>res.json())
-            .then(data => setUser(data));
-    }, [token]);
+            .then(data => {
+                console.log(data);
+                setUser(data)
+            });
+    }, []);
 
     if(!user) return <p>Loading profile...</p>;
 
